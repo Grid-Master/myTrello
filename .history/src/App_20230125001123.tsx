@@ -67,12 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <Todolist 
-        removeTask={removeTask}
-        changeFilter={changeFilter} 
-        title='what to learn' 
-        tasks={tasksForTodoList} 
-      />
+      <Todolist removeTask={removeTask} title='what to learn' tasks={tasksForTodoList} />
       {/* <Todolist title='movies' tasks={tasks2} /> */}  
     </div>
   );

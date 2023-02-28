@@ -2,8 +2,6 @@ import { useState } from 'react';
 import './App.css';
 import Todolist, { taskType } from './Todolist';
 
-export type FilterValuesType = "all" | "completed" | "active"
-
 const initTasks = [
   {
     id: 1,
@@ -45,34 +43,16 @@ const initTasks = [
   // ]
 
 function App() {
-  const [tasks, setTasks] = useState<Array<taskType>>(initTasks)
-  const [filter, setFilter] = useState<FilterValuesType>('active')
+  const [tasks, setTasks] = useState<taskType[]>(initTasks)
+
 
   const removeTask = (id: number) => {
-    let filteredTasks = tasks.filter((task) => task.id !== id)
-    setTasks(filteredTasks)
-  }
-
-  const changeFilter = (value:FilterValuesType) => {
-    setFilter(value)
-  }
-
-  let tasksForTodoList = tasks
-  if(filter === 'completed') {
-    tasksForTodoList = tasks.filter(task => task.isDone)
-  }
-  if(filter === 'active') {
-    tasksForTodoList = tasks.filter(task => !task.isDone)
+    tasks.filter((task) => task.id !== id)
   }
 
   return (
     <div className="App">
-      <Todolist 
-        removeTask={removeTask}
-        changeFilter={changeFilter} 
-        title='what to learn' 
-        tasks={tasksForTodoList} 
-      />
+      <Todolist removeTask={removeTask} title='what to learn' tasks={initTasks} />
       {/* <Todolist title='movies' tasks={tasks2} /> */}  
     </div>
   );

@@ -45,16 +45,12 @@ const initTasks = [
   // ]
 
 function App() {
-  const [tasks, setTasks] = useState<Array<taskType>>(initTasks)
+  const [tasks, setTasks] = useState<taskType[]>(initTasks)
   const [filter, setFilter] = useState<FilterValuesType>('active')
 
   const removeTask = (id: number) => {
     let filteredTasks = tasks.filter((task) => task.id !== id)
     setTasks(filteredTasks)
-  }
-
-  const changeFilter = (value:FilterValuesType) => {
-    setFilter(value)
   }
 
   let tasksForTodoList = tasks
@@ -67,12 +63,7 @@ function App() {
 
   return (
     <div className="App">
-      <Todolist 
-        removeTask={removeTask}
-        changeFilter={changeFilter} 
-        title='what to learn' 
-        tasks={tasksForTodoList} 
-      />
+      <Todolist removeTask={removeTask} title='what to learn' tasks={tasksForTodoList} />
       {/* <Todolist title='movies' tasks={tasks2} /> */}  
     </div>
   );

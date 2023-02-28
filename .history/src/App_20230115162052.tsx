@@ -1,0 +1,14 @@
+import './App.css';
+import Todolist from './Todolist';
+
+function App() {
+  return (
+    <div className="App">
+      <Todolist title={''} />
+      <Todolist title={''} />
+      
+    </div>
+  );
+}
+
+export default App;
