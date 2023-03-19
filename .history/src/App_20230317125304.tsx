@@ -27,6 +27,7 @@ const initTasks = [
     isDone: false
   },
 ]
+console.log(initTasks)
  // const tasks2 = [
   //   {
   //     id: 1,
@@ -47,19 +48,11 @@ const initTasks = [
 
 function App() {
   const [tasks, setTasks] = useState<Array<taskType>>(initTasks)
-  const [filter, setFilter] = useState<FilterValuesType>('all')
+  const [filter, setFilter] = useState<FilterValuesType>('active')
 
-
-  const removeTask = (id: string) => {
+  const removeTask = (id: number) => {
     let filteredTasks = tasks.filter((task) => task.id !== id)
     setTasks(filteredTasks)
-  }
-
-  const addTask = (taskTitle: string) => {
-    if(taskTitle.trim() !== '') {
-      let newTask = {id: v1(), title: taskTitle, isDone: false}
-      setTasks([newTask, ...tasks])
-    }
   }
 
   const changeFilter = (value:FilterValuesType) => {
@@ -79,9 +72,8 @@ function App() {
       <Todolist 
         removeTask={removeTask}
         changeFilter={changeFilter} 
-        addTask={addTask}
         title='what to learn' 
-        tasks={tasksForTodoList}
+        tasks={tasksForTodoList} 
       />
       {/* <Todolist title='movies' tasks={tasks2} /> */}  
     </div>

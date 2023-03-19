@@ -34,10 +34,6 @@ const Todolist = (props:Props) => {
         setTaskTitle('')
     }
 
-    const onRemoveHandler = (id: string) => {
-     props.removeTask(id)
-    }
-
     const allClickHandler = () => props.changeFilter('all')
     const activeClickHandler = () => props.changeFilter('active')
     const completedClickHandler = () => props.changeFilter('completed')
@@ -57,7 +53,7 @@ const Todolist = (props:Props) => {
                 props.tasks.map((task) => <li key={task.id}>
                     <input type='checkbox' checked={task.isDone} />
                     <span>{task.title}</span>
-                    <button onClick={() => onRemoveHandler(task.id)}>X</button>
+                    <button onClick={() => props.removeTask(task.id)}>X</button>
                 </li> )
             }
         </ul>

@@ -47,7 +47,7 @@ const initTasks = [
 
 function App() {
   const [tasks, setTasks] = useState<Array<taskType>>(initTasks)
-  const [filter, setFilter] = useState<FilterValuesType>('all')
+  const [filter, setFilter] = useState<FilterValuesType>('active')
 
 
   const removeTask = (id: string) => {
